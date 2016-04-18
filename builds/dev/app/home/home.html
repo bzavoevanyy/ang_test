@@ -1,6 +1,27 @@
 <h1>Home</h1>
-<div class="panel panel-default" ng-repeat="user in users">
-    <div class="panel-body">
-        {{user.name}} {{user.age}}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <input type="text" class="form-control" ng-model="query">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="check"> Check me out
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="panel panel-default" ng-repeat="(key, user) in users | filter:query" ng-class="{'col-xs-3' : check}">
+            <div class="panel-heading">
+                <a href="#/home/{{user.first_name}}">{{user.first_name}}</a></div>
+            <div class="panel-body">
+                {{user.age}}
+                {{user.eyeColor}}
+            </div>
+        </div>
     </div>
 </div>
